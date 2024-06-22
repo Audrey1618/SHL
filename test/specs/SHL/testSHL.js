@@ -1,54 +1,41 @@
 describe('SHL assignment', () => {
-	it('should verify Estimated Setup Costs', async () => {
+	it('Should show error message of Property Price', async () => {
 		// GET ELEMENTS
-		// const getPropertyPriceInput = await $('>>>[data-testid="propertyPrice"]');
-		// const getStateDropdown = await $('>>>[data-testid="stateAndTerritory-testid"]');
-		// const getStateAndTerritory = await $('>>>[id="dropdown-listbox-stateAndTerritory"]');
-		// const getPropertyUse = await $('>>>[data-testid="propertyUse-testid"]');
-		// const getFirstHomeBuyer = await $('>>>[data-testid="firstHomeBuyer-testid"]');
-		// const getPropertyType = await $('>>>[data-testid="propertyType-testid"]');
-		// const getAddOtherCosts = await $('>>>[data-testid="addOtherCost-testid"]');
+		const getPropertyPriceInput = await $('>>>[data-testid="propertyPrice"]');
+		const getStateDropdown = await $('>>>[data-testid="stateAndTerritory-testid"]');
+		const getStateAndTerritory = await $('>>>[id="dropdown-listbox-stateAndTerritory"]');
+		const getPropertyUse = await $('>>>[data-testid="propertyUse-testid"]');
+		const getFirstHomeBuyer = await $('>>>[data-testid="firstHomeBuyer-testid"]');
+		const getPropertyType = await $('>>>[data-testid="propertyType-testid"]');
+		const getAddOtherCosts = await $('>>>[data-testid="addOtherCost-testid"]');
 
-		// // EXECUTE TESTS
-		// await browser.url('');
-
-		// // 1. input property price
-		// await getPropertyPriceInput.clearValue();
-		// await getPropertyPriceInput.setValue('999,999');
-
-		// // 2. select state
-		// await getStateDropdown.click();
-		// await getStateAndTerritory.$('li:nth-child(4)').click();
-		// // await expect(getCurrentState).toHaveText('New South Wales');
-
-		// // 3. select property use
-		// await getPropertyUse.$('label:nth-child(1)').click();
-
-		// // 4. Select First home buyer
-		// await getFirstHomeBuyer.$('label:nth-child(2)').click();
-
-		// // 5. Select Property type
-		// await getPropertyType.$('label:nth-child(1)').click();
-
-		// // 6. Add other costs
-		// await getAddOtherCosts.$('label:nth-child(1)').click();
-
-		// // await browser.pause(30000);
-
+		// EXECUTE TESTS
+		await browser.url('');
+		// 1. input property price
+		await getPropertyPriceInput.clearValue();
+		await getPropertyPriceInput.setValue('999,999');
+		// 2. select state
+		await getStateDropdown.click();
+		await getStateAndTerritory.$('li:nth-child(4)').click();
+		// await expect(getCurrentState).toHaveText('New South Wales');
+		// 3. select property use
+		await getPropertyUse.$('label:nth-child(1)').click();
+		// 4. Select First home buyer
+		await getFirstHomeBuyer.$('label:nth-child(2)').click();
+		// 5. Select Property type
+		await getPropertyType.$('label:nth-child(1)').click();
+		// 6. Add other costs
+		await getAddOtherCosts.$('label:nth-child(1)').click();
+		// await browser.pause(30000);
+	});
+	it('should verify Estimated Setup Costs', async () => {
 		// MOCK GRAPHQL RESPONSE
 		// @ts-ignore
-		// const getEstimatedCost = await $('>>>[data-testid="estimate-cost"]').$(
-		// 	'>>>span'
-		// );
+		const mockStampDutyGraphQL = await browser.mock('**' + '/home-loan-calc-bff', { method: 'post' });
 
-		const mockStampDutyGraphQL = await browser.mock(
-			'**' + '/home-loan-calc-bff',
-			{ method: 'post' }
-		);
-
-		const getEstimatedCost = (await $('>>>[data-testid="estimate-cost"]')).$('>>>span')
+		const getEstimatedCost = (await $('>>>[data-testid="estimate-cost"]')).$('>>>span');
 		const getTableResult = await $('>>>[class^="TableResultWrapper"]');
-        const getStampDuty = await getTableResult.$$('>>>dd')[0];
+		const getStampDuty = await getTableResult.$$('>>>dd')[0];
 		const getMortageRegistration = await getTableResult.$$('>>>dd')[1];
 		const getTransferFee = await getTableResult.$$('>>>dd')[2];
 		const getAdditionalCost = await $('>>>[data-testid="additional-cost"]');
@@ -74,7 +61,6 @@ describe('SHL assignment', () => {
 				fetchResponse: false,
 			}
 		);
-
 
 		await browser.url('');
 
