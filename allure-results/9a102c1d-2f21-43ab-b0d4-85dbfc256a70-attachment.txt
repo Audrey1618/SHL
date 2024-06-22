@@ -1,0 +1,4 @@
+{
+  "using": "css selector",
+  "value": "#wrapper > div > div > div:nth-child(5) > div > div:nth-child(2) > div > section > div.aem-Grid.aem-Grid--12.aem-Grid--default--12 > div > mini-app-loader > ho-omh-scenario-calculator-web"
+}

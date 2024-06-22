@@ -1,0 +1,4 @@
+{
+  "using": "css selector",
+  "value": "ho-omh-scenario-calculator-web"
+}

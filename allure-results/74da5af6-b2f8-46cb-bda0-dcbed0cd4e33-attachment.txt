@@ -1,0 +1,4 @@
+{
+  "using": "css selector",
+  "value": "#wrapper >> div > mini-app-loader > ho-omh-scenario-calculator-web"
+}
