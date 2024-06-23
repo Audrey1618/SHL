@@ -37,12 +37,13 @@ class PropertyDetails {
 		return $('>>>[data-testid="propertyType-testid"]');
 	}
 
-	get radioAddOtherCosts() {
-		return $('>>>[data-testid="itemField[0].itemCost"]');
+	async radioAddOtherCosts(number) {
+		await $(`>>>[data-testid="itemField[${number}].itemCost"]`);
+		return this;
 	}
 
-	async chooseRadio(radio) {
-		await $(`li:nth-child(${radio})`);
+	chooseRadio(radio) {
+		$(`li:nth-child(${radio})`);
 		return this;
 	}
 
@@ -55,25 +56,14 @@ class PropertyDetails {
 		await this.propertyPrice.setValue(price);
 	}
 
-	async chooseState(radio) {
+	async chooseState(num) {
 		await this.dropdownState.click();
-		await this.dropdownListState.chooseRadio(radio).click();
-	}
-}
-
-class AdditionalSetupCost {
-	get inputItemName() {
-		return $('>>>[data-testid="itemField[0].itemName_testid"]');
+		await this.dropdownListState.chooseRadio(num).click();
 	}
 
-	get inputCost() {
-		return $('>>>[data-testid="itemField[0].itemCost"]');
-	}
-
-	get btnAddAnotherCost() {
-		return $('>>>[id="addOtherCostButton"]');
-	}
+	// async chooseState(radio) {
+	// 	await this.radioPropertyUseTest(radio)
+	// }
 }
 
 module.exports = new PropertyDetails();
-module.exports = new AdditionalSetupCost();

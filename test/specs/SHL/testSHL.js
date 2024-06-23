@@ -3,7 +3,7 @@ describe('SHL assignment', () => {
 		// GET ELEMENTS
 		const getPropertyPriceInput = await $('>>>[data-testid="propertyPrice"]');
 		const getStateDropdown = await $('>>>[data-testid="stateAndTerritory-testid"]');
-		const getStateAndTerritory = await $('>>>[id="dropdown-listbox-stateAndTerritory"]');
+		const getStateAndTerritory = await $('>>>[id="dropdown-listbox-stateAndTerritory"');
 		const getPropertyUse = await $('>>>[data-testid="propertyUse-testid"]');
 		const getFirstHomeBuyer = await $('>>>[data-testid="firstHomeBuyer-testid"]');
 		const getPropertyType = await $('>>>[data-testid="propertyType-testid"]');
