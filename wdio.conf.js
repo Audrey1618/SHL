@@ -20,7 +20,9 @@ exports.config = {
 	// The path of the spec files will be resolved relative from the directory of
 	// of the config file unless it's absolute.
 	//
-	specs: ['./test/specs/SHL/**/*.js'],
+
+	specs: ['test/specs/SHL/testSHLwithPOM.js'],
+
 	// Patterns to exclude.
 	exclude: [
 		// 'path/to/excluded/files'
@@ -49,10 +51,10 @@ exports.config = {
 	//
 	capabilities: [
 		{
-            browserName: 'chrome',
-            'goog:chromeOptions': {
-                args: ['disable-web-security']
-            }
+			browserName: 'chrome',
+			'goog:chromeOptions': {
+				args: ['disable-web-security'],
+			},
 		},
 	],
 
@@ -87,8 +89,7 @@ exports.config = {
 	// with `/`, the base url gets prepended, not including the path portion of your baseUrl.
 	// If your `url` parameter starts without a scheme or `/` (like `some/path`), the base url
 	// gets prepended directly.
-	baseUrl:
-		'https://www.nab.com.au/personal/home-loans/calculators/stamp-duty-calculator',
+	baseUrl: 'https://www.nab.com.au/personal/home-loans/calculators/stamp-duty-calculator',
 	//
 	// Default timeout for all waitFor* commands.
 	waitforTimeout: 10000,
@@ -230,11 +231,7 @@ exports.config = {
 	 * @param {boolean} result.passed    true if test has passed, otherwise false
 	 * @param {object}  result.retries   information about spec related retries, e.g. `{ attempts: 0, limit: 0 }`
 	 */
-	afterTest: async function (
-		test,
-		context,
-		{ error, result, duration, passed, retries }
-	) {
+	afterTest: async function (test, context, { error, result, duration, passed, retries }) {
 		if (!passed) {
 			await browser.takeScreenshot();
 		}
