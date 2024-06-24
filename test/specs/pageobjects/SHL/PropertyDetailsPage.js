@@ -42,8 +42,8 @@ class PropertyDetails {
 		return this;
 	}
 
-	chooseRadio(radio) {
-		$(`li:nth-child(${radio})`);
+	async chooseRadioByIndex(radio) {
+		await $(`li:nth-child(${radio})`).click();
 		return this;
 	}
 
@@ -56,9 +56,9 @@ class PropertyDetails {
 		await this.propertyPrice.setValue(price);
 	}
 
-	async chooseState(num) {
-		await this.dropdownState.click();
-		await this.dropdownListState.chooseRadio(num).click();
+	async chooseProperyUseByIndex(num) {
+		await this.radioPropertyUse.chooseRadioByIndex(num).click();
+		return this;
 	}
 
 	// async chooseState(radio) {
