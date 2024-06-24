@@ -17,22 +17,26 @@ describe('Test SHL with DOM', () => {
         // await expect(PropertyDetails.propertyPrice).toHaveValue('88888');
         
         // 2. Choose State/Territory
+        await PropertyDetails.chooseStateAndTerritory(1);
         
         // 3. Choose Property Use
-        await PropertyDetails.chooseProperyUseByIndex(1);
+        await PropertyDetails.chooseProperyUse(1);
 
         // 4. Choose First home buyer
+        await PropertyDetails.chooseFirstHomeBuyer(1);
 
         // 5. Choose Property type
+        await PropertyDetails.choosePropertyType(1);
 
-        // 6. Choose Add other setup costs
+        // 6. Add other setup costs
+        await PropertyDetails.radioAddOtherCosts(0)
+        await PropertyDetails.inputAdditionalCostsInfo(0, 'Hello', 7000000)
 
-        // 7. Input setup costs (if choose Add other costs)
 
-        // 8. Mock GraphQL response
+        // 7. Mock GraphQL response
         await mockStampDutyResponse()
 
-        // 9. Expect
+        // 7. Expect
         await browser.url('');
 
         // 10. Verify the cost is equal to the API response

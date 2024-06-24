@@ -37,13 +37,21 @@ class PropertyDetails {
 		return $('>>>[data-testid="propertyType-testid"]');
 	}
 
-	async radioAddOtherCosts(number) {
-		await $(`>>>[data-testid="itemField[${number}].itemCost"]`);
+	inputAdditionalItemName(num) {
+		return $(`>>>[data-testid="itemField[${num}].itemName_testid"]`);
+	}
+
+	inputAdditionalCost(num) {
+		$(`>>>[data-testid="itemField[${num}].itemCost"]`);
 		return this;
 	}
 
-	async chooseRadioByIndex(radio) {
-		await $(`li:nth-child(${radio})`).click();
+	get btnAddAnotherCost() {
+		return $('>>>[id="addOtherCostButton"]');
+	}
+
+	async radioAddOtherCosts(number) {
+		await $(`>>>[data-testid="itemField[${number}].itemCost"]`);
 		return this;
 	}
 
@@ -56,14 +64,30 @@ class PropertyDetails {
 		await this.propertyPrice.setValue(price);
 	}
 
-	async chooseProperyUseByIndex(num) {
-		await this.radioPropertyUse.chooseRadioByIndex(num).click();
+	async chooseStateAndTerritory(num) {
+		await this.dropdownListState.$(`li:nth-child(${num})`).click();
 		return this;
 	}
 
-	// async chooseState(radio) {
-	// 	await this.radioPropertyUseTest(radio)
-	// }
+	async chooseProperyUse(num) {
+		await this.radioPropertyUse.$(`label:nth-child(${num})`).click();
+		return this;
+	}
+
+	async chooseFirstHomeBuyer(num) {
+		await this.radioFirstHomeBuyer.$(`label:nth-child(${num})`).click();
+		return this;
+	}
+
+	async choosePropertyType(num) {
+		await this.radioPropertyType.$(`label:nth-child(${num})`).click();
+		return this;
+	}
+
+	async inputAdditionalCostsInfo(num, name, price) {
+		await this.inputAdditionalItemName(num).setValue(name);
+		await this.inputAdditionalCost(num).setValue(price);
+	}
 }
 
 module.exports = new PropertyDetails();
